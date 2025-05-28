@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi" class="bg-black">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="kudodz">
+  <meta name="keywords" content="j97"
+  <title>I Love J97 ❤️ FC MEO MEO</title>
+  <script src="//cdn.tailwindcss.com"></script>
+  <style>
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .shake {
+      animation: shake 1.5s infinite ease-in-out;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0px, 0px) rotate(0deg); }
+      25% { transform: translate(2px, -2px) rotate(-2deg); }
+      50% { transform: translate(-2px, 2px) rotate(2deg); }
+      75% { transform: translate(2px, 2px) rotate(-2deg); }
+      100% { transform: translate(0px, 0px) rotate(0deg); }
+    }
+
+    .overlay-item {
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen overflow-hidden">
+
+  <div class="relative z-0">
+    <h1 class="text-blue-200 text-4xl text-center mt-20">Trả Lại Công Bằng Cho Anh Jack Của Tao !</h1>
+  </div>
+
+  <script>
+    const directions = ['top', 'bottom', 'left', 'right'];
+    directions.forEach(dir => {
+      for (let i = 0; i < 10; i++) {
+        const span = document.createElement('span');
+        span.textContent = 'Anh Jack Của Tao Bị Chịu Oan Quá Lâu Rồi !';
+        span.className = `blink text-pink-500 border border-white px-1 absolute text-sm font-bold`;
+        span.style.zIndex = '20';
+
+        const offset = Math.random() * 100;
+        if (dir === 'top' || dir === 'bottom') {
+          span.style.left = `${offset}%`;
+          span.style[dir] = '0';
+        } else {
+          span.style.top = `${offset}%`;
+          span.style[dir] = '0';
+        }
+
+        document.body.appendChild(span);
+      }
+    });
+  </script>
+
+  <script>
+    const imageSources = ['./assets/1.jpg', './assets/2.jpg'];
+
+    for (let i = 0; i < 20; i++) {
+      const img = document.createElement('img');
+      img.src = imageSources[Math.floor(Math.random() * imageSources.length)];
+      img.className = 'w-12 h-12 object-cover rounded-full absolute shake overlay-item';
+
+      const side = Math.floor(Math.random() * 4);
+      const offset = Math.random() * 100;
+      switch (side) {
+        case 0: //top
+          img.style.top = '0';
+          img.style.left = `${offset}%`;
+          break;
+        case 1: //bottom
+          img.style.bottom = '0';
+          img.style.left = `${offset}%`;
+          break;
+        case 2: //left
+          img.style.left = '0';
+          img.style.top = `${offset}%`;
+          break;
+        case 3: //right
+          img.style.right = '0';
+          img.style.top = `${offset}%`;
+          break;
+      }
+
+      document.body.appendChild(img);
+    }
+  </script>
+
+</body>
+</html>
