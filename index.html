@@ -6,14 +6,34 @@
   <meta name="author" content="kudodz">
   <meta name="keywords" content="j97">
 </head>
-<iframe
-  src="https://www.tiktok.com/embed/v2/7509505525416070418"
-  width="325"
-  height="580"
-  style="border:none;overflow:hidden"
-  scrolling="no"
-  allow="fullscreen"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-></iframe>
+<body>
+  <iframe
+    id="tiktokVideo"
+    src="https://www.tiktok.com/embed/v2/7509505525416070418"
+    width="325"
+    height="580"
+    style="border:none;overflow:hidden"
+    scrolling="no"
+    allow="fullscreen"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+
+  <script>
+    window.onload = function() {
+      if (confirm("Bạn muốn bật fullscreen không?")) {
+        const elem = document.getElementById("tiktokVideo");
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          elem.msRequestFullscreen();
+        }
+      }
+    };
+  </script>
+
+</body>
+</html>
