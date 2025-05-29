@@ -5,34 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="kudodz">
   <meta name="keywords" content="j97">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    #tiktokVideo {
+      border: none;
+      overflow: hidden;
+      width: 325px;
+      height: 580px;
+      margin-bottom: 15px;
+    }
+    #fullscreenBtn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #25F4EE;
+      color: #000;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+    #fullscreenBtn:hover {
+      background-color: #1cbcd4;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
   <iframe
     id="tiktokVideo"
     src="https://www.tiktok.com/embed/v2/7509505525416070418"
-    width="325"
-    height="580"
-    style="border:none;overflow:hidden"
-    scrolling="no"
     allow="fullscreen"
     allowfullscreen
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
   ></iframe>
+  <br />
+  <button id="fullscreenBtn">Bật Fullscreen Video</button>
 
   <script>
-    window.onload = function() {
-      if (confirm("Bạn muốn bật fullscreen không?")) {
-        const elem = document.getElementById("tiktokVideo");
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen();
-        }
+    const btn = document.getElementById("fullscreenBtn");
+    const video = document.getElementById("tiktokVideo");
+
+    btn.addEventListener("click", () => {
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) { // Safari
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) { // IE11
+        video.msRequestFullscreen();
+      } else {
+        alert("Trình duyệt của bạn không hỗ trợ fullscreen.");
       }
-    };
+    });
   </script>
 
 </body>
